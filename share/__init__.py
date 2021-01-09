@@ -7,6 +7,7 @@ def create_app():
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["BASE_URL"] = os.getenv("BASE_URL")
+    app.url_map.strict_slashes = False
 
     from .models import db
 
