@@ -1,4 +1,4 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, Text
+from sqlalchemy import Column, ForeignKey, Integer, String, Text, Table
 from sqlalchemy.orm import relationship
 from flask_sqlalchemy import SQLAlchemy
 
@@ -12,7 +12,7 @@ class User(db.Model):
     last_name = Column(String)
     email = Column(String)
     lists = relationship("MovieList")
-    profile = relationship("Profile")
+    profile = relationship("Profile", uselist=False, back_populates="user")
 
 
 class Profile(db.Model):
@@ -20,6 +20,7 @@ class Profile(db.Model):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("auth_user.id"))
     user = relationship("User", uselist=False, back_populates="profile")
+    image = Column(String)
 
 
 class Movie(db.Model):
@@ -34,13 +35,22 @@ class Movie(db.Model):
         return "<Movie %r>" % self.title
 
 
+movielist_user_association = Table(
+    "api_movielist_liked_by",
+    db.metadata,
+    Column("movielist_id", Integer, ForeignKey("api_movielist.id")),
+    Column("user_id", Integer, ForeignKey("auth_user.id")),
+)
+
+
 class MovieList(db.Model):
     __tablename__ = "api_movielist"
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    liked_by = Column(Integer)
     owner_id = Column(Integer, ForeignKey("auth_user.id"))
+    owner = relationship("User")
+    liked_by = relationship("User", secondary=movielist_user_association)
 
     def __repr__(self):
         return "<MovieList %r>" % self.name

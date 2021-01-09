@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+ 
+{% block head %}
+    <title>{{ movie_list.title | default("Moviepedia Films") }}</title>
+    <meta name="description" content="Check out my curated list of films I absolutely loved on Moviepedia!">
+    <meta itemprop="description" content="Check out my curated list of films I absolutely loved on Moviepedia!">
+    <meta name="author" content="{{movie_list.owner.get_full_name}}">
+    <meta itemprop="author" content="{{movie_list.owner.get_full_name}}">
+    <meta itemprop="image" content="{{base_url}}/tile150.png">
+    <meta property="og:site_name" content="Moviepedia Films">
+    <meta property="og:type" content="video">
+    <meta itemprop="og:type" content="video">
+    <meta property="og:title" content="Moviepedia Films | {{movie_list.name}}">
+    <meta itemprop="og:title" content="Moviepedia Films | {{movie_list.name}}">
+    <meta property="og:description" content="Check out my curated list of films I absolutely loved on Moviepedia!">
+    <meta itemprop="og:description" content="Check out my curated list of films I absolutely loved on Moviepedia!">
+    <meta property="og:url" content="{{base_url}}/list/{{movie_list.id}}/{{movie_list.name}}">
+    <meta itemprop="og:url" content="{{base_url}}/list/{{movie_list.id}}/{{movie_list.name}}">
+    <meta property="og:image" content="{{base_url}}{{ movie_list.owner.profile.image or '' }}">
+    <meta itemprop="og:image" content="{{base_url}}{{ movie_list.owner.profile.image or '' }}">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta name="twitter:image:alt" content="{{movie_list.name}}">
+{% endblock %}
