@@ -17,7 +17,11 @@ def create_app():
         return dict(base_url=app.config["BASE_URL"])
 
     from share.views.movie import app as movie_app
+    from share.views.movie_list import app as movie_list_app
+    from share.views.catch_all import app as catch_all_app
 
     app.register_blueprint(movie_app)
+    app.register_blueprint(movie_list_app)
+    app.register_blueprint(catch_all_app)
 
     return app
