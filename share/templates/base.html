@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#f7cd23">
+    {% block head %}
+        <title>{{ title | default("Moviepedia Films") }}</title>
+        <meta name="description" content="At Moviepedia Films, we are building the 'first social content discovery platform' where both filmmakers and their audience get rewarded for what they do best- create &amp; curate.">
+        <meta itemprop="description" content="At Moviepedia Films, we are building the 'first social content discovery platform' where both filmmakers and their audience get rewarded for what they do best- create &amp; curate.">
+        <meta name="author" content="Moviepedia Films">
+        <meta itemprop="author" content="Moviepedia Films">
+        <meta itemprop="image" content="{{base_url}}/tile150.png">
+        <meta property="og:site_name" content="Moviepedia Films">
+        <meta property="og:type" content="website">
+        <meta itemprop="og:type" content="website">
+        <meta property="og:title" content="Moviepedia Films | The First Social Content Discovery Platform">
+        <meta itemprop="og:title" content="Moviepedia Films | The First Social Content Discovery Platform">
+        <meta property="og:description" content="At Moviepedia Films, we are building the 'first social content discovery platform' where both filmmakers and their audience get rewarded for what they do best- create &amp; curate.">
+        <meta itemprop="og:description" content="At Moviepedia Films, we are building the 'first social content discovery platform' where both filmmakers and their audience get rewarded for what they do best- create &amp; curate.">
+        <meta property="og:url" content="{{base_url}}/">
+        <meta itemprop="og:url" content="{{base_url}}/">
+        <meta property="og:image" content="{{base_url}}/tile-wide-dark.jpeg">
+        <meta itemprop="og:image" content="{{base_url}}/tile-wide-dark.jpeg">
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image:alt" content="Moviepedia Films Logo">
+    {% endblock %}
+  </head>
+</html>
