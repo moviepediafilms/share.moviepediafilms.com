@@ -20,9 +20,11 @@ def create_app():
     from share.views.movie import app as movie_app
     from share.views.movie_list import app as movie_list_app
     from share.views.catch_all import app as catch_all_app
+    from share.views.event import app as event_app
 
     app.register_blueprint(movie_app)
     app.register_blueprint(movie_list_app)
+    app.register_blueprint(event_app)
     app.register_blueprint(catch_all_app)
 
     return app

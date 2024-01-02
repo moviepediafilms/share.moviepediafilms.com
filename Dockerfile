@@ -1,14 +1,18 @@
-FROM python:3.8
+FROM python:3.10 as base
 
-RUN pip install --upgrade pip
+RUN pip install --upgrade pip pipenv
 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
+COPY Pipfile Pipfile.lock ./
 
-RUN pip install -r requirements.txt
+RUN pipenv install --system --deploy --ignore-pipfile
 
+FROM base as dev
+RUN pipenv install --system --deploy --ignore-pipfile --dev
+
+FROM base as prod
 COPY . .
 
 EXPOSE 80
-ENTRYPOINT ["/app/run.sh"]
+CMD ["/app/run.sh"]
