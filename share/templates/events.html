@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block head %}
+<title>{{ meta.title | default("Moviepedia Films") }}</title>
+<meta name="description" content="{{meta.about}}" />
+<meta itemprop="description" content="{{meta.about}}" />
+<meta name="keywords" content="{{meta.keywords}}" />
+<meta name="author" content="Moviepedia Films" />
+<meta itemprop="author" content="Moviepedia Films" />
+<meta itemprop="image" content="{{base_url}}/{{meta.image}}" />
+<meta property="og:site_name" content="Moviepedia Films" />
+<meta property="og:title" content="Moviepedia Films | {{meta.title}}" />
+<meta itemprop="og:title" content="Moviepedia Films | {{meta.title}}" />
+<meta property="og:description" content="{{meta.about}}" />
+<meta itemprop="og:description" content="{{meta.about}}" />
+<meta property="og:url" content="{{base_url}}/events/{{meta.slug}}" />
+<meta itemprop="og:url" content="{{base_url}}/events/{{meta.slug}}" />
+<meta property="og:image" content="{{base_url}}/{{ meta.poster or '' }}" />
+<meta itemprop="og:image" content="{{base_url}}/{{ meta.poster or '' }}" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta name="twitter:image:alt" content="{{meta.title}}" />
+{% endblock %}
